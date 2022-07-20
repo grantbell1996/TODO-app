@@ -1,9 +1,12 @@
 import React from 'react'
+import './Todo.css'
 
 function Todo(props) {
   return (
-    <li>{props.todo}</li>
+    <div className='todo__list'> 
+    <li>{props.text}</li>
+    </div>
   )
-}
+} 
 
-export default Todo
+export default Todo;
