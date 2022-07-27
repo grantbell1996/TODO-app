@@ -3,6 +3,7 @@ import Todo from './Todo';
 import "./App.css";
 import db from './firebase'
 import firebase from "firebase/compat/app";
+import todoHeader from "./images/todo_header.png";
 
 
 function App() {
@@ -13,8 +14,7 @@ function App() {
     db.collection('todos').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       //snapshot is taking a "snapshot" of the database, then mapping through the docs (the individual objects in the database)
       //then grabbing the objects with the key "todo" and setting to the todo array in the above useState
-      console.log(snapshot.docs.map(doc => doc.data()))
-      setTodos(snapshot.docs.map(doc => doc.data().todo))
+      setTodos(snapshot.docs.map(doc => ({id: doc.id ,todo: doc.data().todo})))
     })
   }, []);
 
@@ -32,23 +32,26 @@ function App() {
 
   return (
     <div className="App">
-      <h1>hello me</h1>
+      <img className="header" src={todoHeader}></img>
       
+      <div className="todo_body"> 
       <form>
         <input
+        className="todo_field"
         placeholder="write a todo"
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
-        <button type="submit" onClick={addTodo}>add todo</button>
+        <button className="todo_button" type="submit" onClick={addTodo}>add todo</button>
       </form>
 
       <ul>
         {todos.map(todo => (
-          <Todo text={todo}/>
+          <Todo todo={todo}/>
           // <li>{todo}</li>
         ))}
       </ul>
+      </div>
 
     </div>
   );

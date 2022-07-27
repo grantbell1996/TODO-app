@@ -1,0 +1,26 @@
+.todo__list {
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    text-align: center;
+}
+
+.todo {
+}
+
+.delete_button {
+    padding: .7%;
+    margin: 1%;
+    margin-left: 4%;
+    row-gap: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 1px 2px 10px rgb(188, 188, 188);
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 5px;
+    transition: transform .2s;
+    text-decoration: none;
+  }
+  
+  .delete_button:hover {
+    transform: scale(1.1)
+  }
